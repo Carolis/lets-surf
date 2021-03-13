@@ -1,39 +1,48 @@
 {
-  "name": "lets-surf-api",
+  "name": "lets-surf",
   "version": "1.0.0",
-  "description": "Node Typescript API",
+  "description": "Complete API built with Node.js and Typescript",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "yarn build && node dist/index.js",
-    "start:dev": "ts-node-dev --transpile-only src/index.ts",
+    "start": "yarn build && node dist/src/index.js",
+    "start:local": "ts-node-dev 'src/index.ts'",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./src ./test --ext .ts",
-    "lint:fix": "eslint ./src ./test --ext .ts --fix"
+    "lint:fix": "eslint ./src ./test --ext .ts --fix",
+    "test:functional": "jest --projects ./test --forceExit --runInBand"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Carolis/lets-surf.git"
   },
+  "keywords": [
+    "node",
+    "nodejs",
+    "typescript",
+    "api"
+  ],
   "author": "Carolina Ale",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Carolis/lets-surf/issues"
+    "url": "https://github.com/Carolis/lets-surf.git/issues"
   },
-  "homepage": "https://github.com/Carolis/lets-surf#readme",
-  "devDependencies": {
-    "@types/jest": "^26.0.20",
-    "@types/module-alias": "^2.0.0",
-    "@types/node": "^14.14.34",
-    "@typescript-eslint/eslint-plugin": "^4.17.0",
-    "@typescript-eslint/parser": "^4.17.0",
-    "eslint": "^7.22.0",
-    "jest": "^26.6.3",
-    "ts-jest": "^26.5.3",
-    "ts-node-dev": "^1.1.6",
-    "typescript": "^4.2.3"
-  },
+  "homepage": "https://github.com/Carolis/lets-surf.git#readme",
   "dependencies": {
     "module-alias": "^2.2.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@types/module-alias": "^2.0.0",
+    "@types/node": "^13.13.2",
+    "@types/supertest": "^2.0.9",
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
+    "eslint": "^6.8.0",
+    "jest": "^26.0.1",
+    "supertest": "^4.0.2",
+    "ts-jest": "^26.0.0",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.8.3"
   }
 }
