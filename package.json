@@ -1,0 +1,19 @@
+{
+  "name": "lets-surf-api",
+  "version": "1.0.0",
+  "description": "Node Typescript API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Carolis/lets-surf.git"
+  },
+  "author": "Carolina Ale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Carolis/lets-surf/issues"
+  },
+  "homepage": "https://github.com/Carolis/lets-surf#readme"
+}
