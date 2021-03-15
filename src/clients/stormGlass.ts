@@ -1,10 +1,11 @@
-import { AxiosStatic } from 'axios';
+import axios, { AxiosStatic } from 'axios';
+
 export interface StormGlassPointSource {
-  //noaa: number
   [key: string]: number;
 }
+
 export interface StormGlassPoint {
-  readonly time: string;
+  time: string;
   readonly waveHeight: StormGlassPointSource;
   readonly waveDirection: StormGlassPointSource;
   readonly swellDirection: StormGlassPointSource;
@@ -17,6 +18,7 @@ export interface StormGlassPoint {
 export interface StormGlassForecastResponse {
   hours: StormGlassPoint[];
 }
+
 export interface ForecastPoint {
   time: string;
   waveHeight: number;
@@ -33,15 +35,19 @@ export class StormGlass {
     'swellDirection,swellHeight,swellPeriod,waveDirection,waveHeight,windDirection,windSpeed';
   readonly stormGlassAPISource = 'noaa';
 
-  constructor(protected request: AxiosStatic) {}
+  constructor(protected request: AxiosStatic = axios) {}
 
-  public async fetchPoints(lat: number, lng: number): Promise<ForecastPoint> {
+  public async fetchPoints(lat: number, lng: number): Promise<ForecastPoint[]> {
     const response = await this.request.get<StormGlassForecastResponse>(
-      `https://api.stormglass.io/v2/weather/point?params=${this.stormGlassAPIParams}&source=${this.stormGlassAPISource}&end=1592113802&lat=${lat}&lng=${lng}`
+      `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${this.stormGlassAPIParams}&source=${this.stormGlassAPISource}`,
+      {
+        headers: {
+          Authorization: 'fake-token',
+        },
+      }
     );
     return this.normalizeResponse(response.data);
   }
-
   private normalizeResponse(
     points: StormGlassForecastResponse
   ): ForecastPoint[] {
